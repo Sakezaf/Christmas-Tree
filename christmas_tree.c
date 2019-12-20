@@ -118,11 +118,16 @@ int main()
     srand(time(NULL));
     int ht = 20;
 
-    clrscr();
+    while (1)
+    {
+        clrscr();
 
-    printTree(ht);
+        printTree(ht);
 
-    printLog(ht);
+        printLog(ht);
+
+        sleep(1);
+    }
 
     return 0;
 }
