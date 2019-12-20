@@ -3,6 +3,13 @@
 #include <time.h>
 #include <unistd.h>
 
+#ifdef _unix_
+#include <unistd.h>
+#elif defined _WIN32
+#include <windows.h>
+#define sleep(x) Sleep(1000 * (x))
+#endif
+
 void clrscr()
 {
     system("@cls||clear");
@@ -92,7 +99,6 @@ void printLog(int n)
     {
         printf("*");
 
-        // space handler
         for (j = 0; j < k; j++)
             printRandSpace();
 
