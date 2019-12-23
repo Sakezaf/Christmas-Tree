@@ -3,11 +3,26 @@
 #include <time.h>
 #include <unistd.h>
 
+#define RED "\x1b[31m"
+#define GREEN "\x1b[32m"
+#define YELLOW "\x1b[33m"
+#define BLUE "\x1b[34m"
+#define MAGENTA "\x1b[35m"
+#define CYAN "\x1b[36m"
+#define RESET "\x1B[37m"
+
 #ifdef _unix_
 #include <unistd.h>
 #elif defined _WIN32
 #include <windows.h>
 #define sleep(x) Sleep(1000 * (x))
+#define RED ""
+#define GREEN ""
+#define YELLOW ""
+#define BLUE ""
+#define MAGENTA ""
+#define CYAN ""
+#define RESET ""
 #endif
 
 void clrscr()
@@ -20,11 +35,18 @@ void printRandLeaf()
     char leaftypes[5] = {'.', '*', '+', 'o', 'O'};
     int temp = rand() % 4;
 
-    // Giving preference to *
     if (temp == 1)
+    {
+        printRandColorOrnaments();
         printf("%c ", leaftypes[rand() % 5]);
+        printf(RESET);
+    }
     else
+    {
+        printRandColorLeaves();
         printf("%c ", leaftypes[1]);
+        printf(RESET);
+    }
 }
 
 void printRandSpace()
@@ -32,11 +54,58 @@ void printRandSpace()
     char spacetypes[3] = {' ', '*', '+'};
     int temp = rand() % 10;
 
-    // Giving preference to *
     if (temp == 1)
+
         printf("%c", spacetypes[rand() % 3]);
+
     else
         printf("%c", spacetypes[0]);
+}
+
+void printRandColorOrnaments()
+{
+    int temp = rand() % 7;
+
+    switch (temp)
+    {
+    case 0:
+        printf(RESET);
+        break;
+    case 1:
+        printf(YELLOW);
+        break;
+    case 2:
+        printf(BLUE);
+        break;
+    case 3:
+        printf(CYAN);
+        break;
+    case 4:
+        printf(YELLOW);
+        break;
+    case 5:
+        printf(MAGENTA);
+        break;
+    default:
+        printf(RED);
+        break;
+    }
+}
+
+void printRandColorLeaves()
+{
+    int temp = rand() % 3;
+
+    switch (temp)
+    {
+    case 0:
+        printf(RESET);
+        break;
+
+    default:
+        printf(GREEN);
+        break;
+    }
 }
 
 void triangle(int f, int n, int toth)
@@ -123,6 +192,7 @@ int main()
 {
     srand(time(NULL));
     int ht = 20;
+    printf(RESET);
 
     while (1)
     {
