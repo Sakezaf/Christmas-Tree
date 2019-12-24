@@ -255,151 +255,69 @@ int main()
 void song() {
     int  i;
 
-    char *g8[]={"./beep","-f 394","-l 300",NULL};
+    char *C4[]={"./beep","-f 261","-l 600",NULL}; 
+    char *D8[]={"./beep","-f 293","-l 300",NULL};
+    char *e8[]={"./beep","-f 329","-l 300",NULL};
     char *f2[]={"./beep","-f 349","-l 1200",NULL}; 
     char *f4[]={"./beep","-f 349","-l 600",NULL}; 
     char *f8[]={"./beep","-f 349","-l 300",NULL}; 
-    char *e8[]={"./beep","-f 329","-l 300",NULL}; 
-    char *C4[]={"./beep","-f 261","-l 600",NULL}; 
+    char *g4[]={"./beep","-f 394","-l 600",NULL};
+    char *g8[]={"./beep","-f 394","-l 300",NULL}; 
     char *a4[]={"./beep","-f 440","-l 600",NULL}; 
     char *a8[]={"./beep","-f 440","-l 300",NULL};
-    char *d4[]={"./beep","-f 587","-l 600",NULL}; 
-    char *d8[]={"./beep","-f 587","-l 300",NULL};
-    char *D8[]={"./beep","-f 293","-l 300",NULL}; 
+    char *b8[]={"./beep","-f 466","-l 300",NULL};
+    char *b4[]={"./beep","-f 466","-l 600",NULL}; 
     char *c2[]={"./beep","-f 523","-l 1200",NULL};
     char *c4[]={"./beep","-f 523","-l 600",NULL};
     char *c8[]={"./beep","-f 523","-l 300",NULL};
-    char *b8[]={"./beep","-f 466","-l 300",NULL};
-    char *b4[]={"./beep","-f 466","-l 600",NULL};
-    char *g4[]={"./beep","-f 394","-l 600",NULL};
+    char *d4[]={"./beep","-f 587","-l 600",NULL}; 
+    char *d8[]={"./beep","-f 587","-l 300",NULL};
     
-    
+    while(1)
+    {
+        note(f4);
+        note(f8);
+        note(e8);
+        note(f4);
+        note(C4);
 
-    
-        while(1)
-        {
-            if(fork() == 0) {
-                execv(f4[0],f4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(f8[0],f8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(e8[0],e8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(f4[0],f4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(C4[0],C4);
-            }
-            wait(NULL);
-            
-            if(fork() == 0) {
-                execv(a4[0],a4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(a8[0],a8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(g8[0],g8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(a4[0],a4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(f4[0],f4);
-            }
-            wait(NULL);
+        note(a4);
+        note(a8);
+        note(g8);
+        note(a4);
+        note(f4);
 
-            for(i = 0; i < 2; i++)
-            {
-                if(fork() == 0) {
-                execv(a4[0],a4);
-                }
-                wait(NULL);
-                if(fork() == 0) {
-                    execv(d4[0],d4);
-                }
-                wait(NULL);
-                if(fork() == 0) {
-                    execv(c2[0],c2);
-                }
-                wait(NULL);
-            }
-
-            if(fork() == 0) {
-                execv(c4[0],c4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(c8[0],c8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(d8[0],d8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(c4[0],c4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(a4[0],a4);
-            }
-            wait(NULL);
-
-            if(fork() == 0) {
-                execv(b4[0],b4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(b8[0],b8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(c8[0],c8);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(b4[0],b4);
-            }
-            wait(NULL);
-            if(fork() == 0) {
-                execv(g4[0],g4);
-            }
-            wait(NULL);
-
-            for(i = 0; i < 2; i++)
-            {
-                if(fork() == 0) {
-                execv(a4[0],a4);
-                }
-                wait(NULL);
-                if(fork() == 0) {
-                    execv(g4[0],g4);
-                }
-                wait(NULL);
-                if(fork() == 0) {
-                    execv(f2[0],f2);
-                }
-                wait(NULL);
-            }
-
-            
+        for(i = 0; i < 2; i++) {
+            note(a4);
+            note(d4);
+            note(c2);
         }
 
+        note(c4);
+        note(c8);
+        note(d8);
+        note(c4);
+        note(a4);
 
+        note(b4);
+        note(b8);
+        note(c8);
+        note(b4);
+        note(g4);
 
+        for(i = 0; i < 2; i++) {
+            note(a4);
+            note(g4);
+            note(f2);
+        }
 
+    }
 }
 
+void note(char *note[]) {
+    if(fork() == 0) {
+        execv(note[0],note);
+    }
+    wait(NULL);
+}
 
