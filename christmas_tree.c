@@ -1,7 +1,40 @@
+/* 
+*------------------------------------------*
+       Adding music to linux systems. 
+*------------------------------------------*
+
+This won't work on Windows, because I don't have a 
+windows system to test Beep() on.
+
+First compile beep.c with
+gcc beep.c -o beep
+
+Then you can run this :3
+
+Make sure to use sudo to run, because the beeps.
+Otherwise you get warnings instead of a song :D
+
+Merry Christmas!
+
+*------------------------------------------*
+-Sakezaf
+*------------------------------------------*
+
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <getopt.h>
+#include <signal.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <linux/kd.h>
 
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
@@ -23,6 +56,10 @@
 #define MAGENTA ""
 #define CYAN ""
 #define RESET ""
+#endif
+
+#ifndef CLOCK_TICK_RATE
+#define CLOCK_TICK_RATE 1193180
 #endif
 
 void clrscr()
@@ -196,6 +233,10 @@ int main()
     int ht = 20;
     printf(RESET);
 
+    if(fork()== 0) {
+        song();
+    }
+
     while (1)
     {
         clrscr();
@@ -207,5 +248,158 @@ int main()
         sleep(1);
     }
 
+
     return 0;
 }
+
+void song() {
+    int  i;
+
+    char *g8[]={"./beep","-f 394","-l 300",NULL};
+    char *f2[]={"./beep","-f 349","-l 1200",NULL}; 
+    char *f4[]={"./beep","-f 349","-l 600",NULL}; 
+    char *f8[]={"./beep","-f 349","-l 300",NULL}; 
+    char *e8[]={"./beep","-f 329","-l 300",NULL}; 
+    char *C4[]={"./beep","-f 261","-l 600",NULL}; 
+    char *a4[]={"./beep","-f 440","-l 600",NULL}; 
+    char *a8[]={"./beep","-f 440","-l 300",NULL};
+    char *d4[]={"./beep","-f 587","-l 600",NULL}; 
+    char *d8[]={"./beep","-f 587","-l 300",NULL};
+    char *D8[]={"./beep","-f 293","-l 300",NULL}; 
+    char *c2[]={"./beep","-f 523","-l 1200",NULL};
+    char *c4[]={"./beep","-f 523","-l 600",NULL};
+    char *c8[]={"./beep","-f 523","-l 300",NULL};
+    char *b8[]={"./beep","-f 466","-l 300",NULL};
+    char *b4[]={"./beep","-f 466","-l 600",NULL};
+    char *g4[]={"./beep","-f 394","-l 600",NULL};
+    
+    
+
+    
+        while(1)
+        {
+            if(fork() == 0) {
+                execv(f4[0],f4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(f8[0],f8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(e8[0],e8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(f4[0],f4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(C4[0],C4);
+            }
+            wait(NULL);
+            
+            if(fork() == 0) {
+                execv(a4[0],a4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(a8[0],a8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(g8[0],g8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(a4[0],a4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(f4[0],f4);
+            }
+            wait(NULL);
+
+            for(i = 0; i < 2; i++)
+            {
+                if(fork() == 0) {
+                execv(a4[0],a4);
+                }
+                wait(NULL);
+                if(fork() == 0) {
+                    execv(d4[0],d4);
+                }
+                wait(NULL);
+                if(fork() == 0) {
+                    execv(c2[0],c2);
+                }
+                wait(NULL);
+            }
+
+            if(fork() == 0) {
+                execv(c4[0],c4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(c8[0],c8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(d8[0],d8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(c4[0],c4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(a4[0],a4);
+            }
+            wait(NULL);
+
+            if(fork() == 0) {
+                execv(b4[0],b4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(b8[0],b8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(c8[0],c8);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(b4[0],b4);
+            }
+            wait(NULL);
+            if(fork() == 0) {
+                execv(g4[0],g4);
+            }
+            wait(NULL);
+
+            for(i = 0; i < 2; i++)
+            {
+                if(fork() == 0) {
+                execv(a4[0],a4);
+                }
+                wait(NULL);
+                if(fork() == 0) {
+                    execv(g4[0],g4);
+                }
+                wait(NULL);
+                if(fork() == 0) {
+                    execv(f2[0],f2);
+                }
+                wait(NULL);
+            }
+
+            
+        }
+
+
+
+
+}
+
+
