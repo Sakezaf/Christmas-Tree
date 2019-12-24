@@ -171,8 +171,10 @@ void printLog(int n)
         for (j = 0; j < k; j++)
             printRandSpace();
 
+	printf("\x1b[47m");
         for (j = 1; j <= 6; j++)
             printf("#");
+	printf("\x1b[m");
 
         for (j = 0; j < k; j++)
             printRandSpace();
